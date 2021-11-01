@@ -1,10 +1,23 @@
 <div class="content">
-<!--  <button id="basic" type="button" mat-button >-->
-<!--    Basic button-->
-<!--  </button>-->
-
-  <canvas #canvasEl id="canvas" width="1600" height="700"></canvas>
-
+  <canvas #canvasEl id="canvas" width="1400" height="700"></canvas>
+  <div class="game-buttons">
+    <button #startBtn mat-raised-button id="start-btn" color="primary" (click)="startGame()"
+            [disabled]="gameStarted">
+      Start
+    </button>
+    <button mat-raised-button id="stop-btn" color="warn" (click)="stopGame()"
+            [disabled]="!gameStarted">
+      Stop
+    </button>
+    <button mat-raised-button id="clear-btn" color="basic" (click)="clearGrid()"
+            [disabled]="gameStarted || !gameStopped && !gridRandomized">
+      Clear
+    </button>
+    <button mat-raised-button id="randomize-btn" color="basic" (click)="randomizeGrid()"
+            [disabled]="(gameStarted || gameStopped)">
+      Randomize
+    </button>
+  </div>
 
 </div>
 
