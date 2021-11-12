@@ -41,6 +41,31 @@ export class HomeComponent implements AfterViewInit {
     return initialGrid.map(arr => arr.map(() => Math.floor(Math.random() * 2)));
   }
 
+  /** Fill initial grid with the custom data from the screen (by click on cells) */
+  fillInitialGrid(event: MouseEvent) {
+    if (!this.gameStarted) {
+      const rect = this.canvasEl.nativeElement.getBoundingClientRect()
+      const xCoord = event.clientX - rect.left;
+      const yCoord = event.clientY - rect.top;
+
+      const colNumber = Math.floor(xCoord / this.resolution);
+      const rowNumber = Math.floor( yCoord / this.resolution);
+
+      console.log("x: " + xCoord + " y: " + yCoord);
+      console.log("xCol: " + colNumber + " yRow: " + rowNumber);
+
+      if (this.currentGridState[colNumber][rowNumber] == 0) {
+        this.currentGridState[colNumber][rowNumber] = 1;
+      }
+      else {
+        this.currentGridState[colNumber][rowNumber] = 0;
+      }
+
+      this.paintGridCells(this.currentGridState);
+      this.gridRandomized = true;
+    }
+  }
+
   /** Get next cells generation array */
   getNextGenCells(): number[][] {
     const currentCellsGen = this.currentGridState.map(arr => arr.slice());
@@ -106,30 +131,14 @@ export class HomeComponent implements AfterViewInit {
     }
   }
 
-  /** Starts game (cells animation) */
+  /** Starts game (cells animation) / Resume game */
   startGame() {
-    if (this.gridRandomized)
-    {
-      this.animReqId = requestAnimationFrame(this.updateGrid.bind(this));
-      this.gameStarted = true;
-      this.gridRandomized = false;
-    }
-    else if (!this.gameStarted && !this.gameStopped) {
-      const initialGrid = this.getInitialGrid();
-      this.currentGridState = this.randomizeInitialGrid(initialGrid);
-      this.animReqId = requestAnimationFrame(this.updateGrid.bind(this));
-      this.gameStarted = true;
-      this.gameStopped = false;
-    }
-    else {
-      this.animReqId = requestAnimationFrame(this.updateGrid.bind(this));
-      this.gameStarted = true;
-      this.gameStopped = false;
-    }
-
+    this.animReqId = requestAnimationFrame(this.updateGrid.bind(this));
+    this.gameStarted = true;
+    this.gameStopped = false;
   }
 
-  /** Stops game (cells animation) */
+  /** Stops game (cells animation) / Pause game */
   stopGame() {
     if (this.animReqId) {
       cancelAnimationFrame(this.animReqId);
@@ -158,6 +167,7 @@ export class HomeComponent implements AfterViewInit {
   ngAfterViewInit() {
     const initialGrid = this.getInitialGrid();
     this.paintGridCells(initialGrid);
+    this.currentGridState = initialGrid;
   }
 }
 
