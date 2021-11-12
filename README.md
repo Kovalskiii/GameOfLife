@@ -7,6 +7,9 @@ More details on the site [Game of Life](https://en.wikipedia.org/wiki/Conway%27s
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.6.
 
+
+You can fill grid with random values by clicking Randomize button, or you can fill grid on your own by clicking on cells.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
