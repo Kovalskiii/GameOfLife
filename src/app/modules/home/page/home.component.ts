@@ -20,7 +20,7 @@ export class HomeComponent implements AfterViewInit {
   animReqId!:        number;
   gameStarted:       boolean = false;
   gameStopped:       boolean = false;
-  gridRandomized:    boolean = false;
+  gridIsFilled:    boolean = false;
 
   constructor() {}
 
@@ -62,7 +62,7 @@ export class HomeComponent implements AfterViewInit {
       }
 
       this.paintGridCells(this.currentGridState);
-      this.gridRandomized = true;
+      this.gridIsFilled = true;
     }
   }
 
@@ -153,7 +153,7 @@ export class HomeComponent implements AfterViewInit {
     this.currentGridState = this.getInitialGrid();
     this.paintGridCells(this.currentGridState);
     this.gameStopped = false;
-    this.gridRandomized = false;
+    this.gridIsFilled = false;
   }
 
   /** Fill grid with random values */
@@ -161,7 +161,7 @@ export class HomeComponent implements AfterViewInit {
     const initialGrid = this.getInitialGrid();
     this.currentGridState = this.randomizeInitialGrid(initialGrid);
     this.paintGridCells(this.currentGridState);
-    this.gridRandomized = true;
+    this.gridIsFilled = true;
   }
 
   ngAfterViewInit() {
