@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {ContentComponent} from "./layout/content/content.component";
+import {AuthLayoutComponent} from "./layout/auth-layout/auth-layout.component";
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/home',
+    redirectTo: '/home', // temporary /auth/login
     pathMatch: 'full'
   },
   {
@@ -19,8 +20,13 @@ const routes: Routes = [
       },
     ]
   },
-
-  { path: '**', redirectTo: '/home', pathMatch: 'full' }
+  {
+    path: 'auth',
+    component: AuthLayoutComponent,
+    loadChildren: () =>
+      import('./modules/auth/auth.module').then(m => m.AuthModule)
+  },
+  { path: '**', redirectTo: '/home', pathMatch: 'full' } // temporary /auth/login
 ];
 
 @NgModule({

@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -20,17 +20,21 @@ export class HomeComponent implements AfterViewInit {
   animReqId!:        number;
   gameStarted:       boolean = false;
   gameStopped:       boolean = false;
-  gridIsFilled:    boolean = false;
+  gridIsFilled:      boolean = false;
 
   constructor() {}
 
   /** Build grid */
   getInitialGrid(): number[][]  {
-    this.canvasEl.nativeElement.width = 1400;
-    this.canvasEl.nativeElement.height = 700;
-    this.resolution = 10;
-    this.colsNum = this.canvasEl.nativeElement.width / this.resolution;
-    this.rowsNum = this.canvasEl.nativeElement.height / this.resolution;
+    this.canvasEl.nativeElement.width = this.canvasEl.nativeElement.offsetWidth; //1400
+    this.canvasEl.nativeElement.height = this.canvasEl.nativeElement.offsetHeight; //700
+    // this.canvasEl.nativeElement.width = 850; //1400
+    // this.canvasEl.nativeElement.height = 650; //700
+    console.log(this.canvasEl.nativeElement.width);
+    console.log(this.canvasEl.nativeElement.height);
+    this.resolution = 12;
+    this.colsNum = Math.round(this.canvasEl.nativeElement.width / this.resolution);
+    this.rowsNum = Math.round(this.canvasEl.nativeElement.height / this.resolution);
 
     return new Array(this.colsNum).fill(0)
       .map(() => new Array(this.rowsNum).fill(0));
@@ -168,6 +172,11 @@ export class HomeComponent implements AfterViewInit {
     const initialGrid = this.getInitialGrid();
     this.paintGridCells(initialGrid);
     this.currentGridState = initialGrid;
+  }
+
+  @HostListener('window:resize', ['$event'])
+  sizeChange(event: any) {
+    window.location.reload();
   }
 }
 

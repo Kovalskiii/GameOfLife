@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import {AuthRoutingModule} from "./auth-routing.module";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatIconModule} from "@angular/material/icon";
+import { LoginComponent } from './page/login/login.component';
+import { RegisterComponent } from './page/register/register.component';
+import { AuthRoutingModule } from "./auth-routing.module";
+import { MaterialModule } from "../../shared/material/material.module";
+import { ReactiveFormsModule } from "@angular/forms";
 
 
 @NgModule({
@@ -15,8 +15,8 @@ import {MatIconModule} from "@angular/material/icon";
   imports: [
     CommonModule,
     AuthRoutingModule,
-    MatFormFieldModule,
-    MatIconModule
+    MaterialModule,
+    ReactiveFormsModule,
   ]
 })
 export class AuthModule { }

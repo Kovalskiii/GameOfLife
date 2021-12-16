@@ -7,6 +7,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+
 
 const mat = [
   MatButtonModule,
@@ -16,6 +19,8 @@ const mat = [
   MatSlideToggleModule,
   MatToolbarModule,
   FontAwesomeModule,
+  MatFormFieldModule,
+  MatInputModule,
 ];
 
 @NgModule({

@@ -1,5 +1,5 @@
 <div class="content">
-  <canvas #canvasEl id="canvas" width="1400" height="700" (click)="fillInitialGrid($event)"></canvas>
+  <canvas #canvasEl id="canvas" (click)="fillInitialGrid($event)"></canvas>
   <div class="game-buttons">
     <button #startBtn mat-raised-button id="start-btn" color="primary" (click)="startGame()"
             [disabled]="gameStarted || !gameStopped && !gridIsFilled">

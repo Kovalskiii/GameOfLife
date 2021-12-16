@@ -1,6 +1,6 @@
 .toolbar {
-  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
-  background-color: rgba(255, 255, 255, .15);
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .3);
+  background-color: rgba(192, 181, 225, .9);
   backdrop-filter: blur(25px);
   height: 80px;
 }
@@ -13,4 +13,10 @@
 
 .example-spacer {
   flex: 1 1 auto;
+}
+
+@media (max-width: 1024px) {
+  .app-name {
+    font-size: 40px;
+  }
 }

@@ -1,0 +1,25 @@
+.bg-image {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100vw;
+  background: url('https://www.teahub.io/photos/full/86-868315_beautiful-late-sunset-for-1920-x-1080-hdtv.jpg') no-repeat center center
+  fixed;
+  background-size: cover;
+}
+
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 22vw;
+  min-height: 450px;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 5px;
+  background-color: rgba(42, 42, 42, 0.8);
+}
+
