@@ -1,4 +1,6 @@
 # GameOfLifePrj
+site is published at: https://kovalskiii.github.io/GameOfLife/home
+
 This application is reproduction of the Game of Life.
 
 The Game of Life, also known simply as Life, is a cellular automaton devised by the British mathematician John Horton Conway in 1970.
